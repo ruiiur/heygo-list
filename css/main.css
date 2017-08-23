@@ -82,6 +82,9 @@
       display: table-cell;
       box-sizing: border-box;
       padding: 10px; }
+      .main-content table td > a {
+        color: #07d;
+        text-decoration: none; }
   .main-content .pages {
     text-align: center; }
     .main-content .pages > span:not(.sum) {
@@ -111,5 +114,44 @@
         text-align: center;
         border: 1px solid #ccc;
         outline: none; }
+  .main-content .create-list {
+    padding: 0; }
+    .main-content .create-list li {
+      list-style: none;
+      margin-bottom: 15px; }
+      .main-content .create-list li > label {
+        display: inline-block;
+        width: 120px;
+        height: 25px;
+        text-align: right;
+        color: #333;
+        font-size: 14px; }
+      .main-content .create-list li > input:not(.radio) {
+        width: 289px;
+        height: 34px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        color: #555;
+        box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+        padding: 6px 12px;
+        box-sizing: border-box; }
+      .main-content .create-list li .radio {
+        width: 22px;
+        height: 22px;
+        margin-right: 5px;
+        vertical-align: sub; }
+  .main-content .btn {
+    padding: 7px 35px;
+    border-radius: 2px;
+    border: none;
+    background: #0080ed;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 1.42857143;
+    text-align: center;
+    white-space: nowrap;
+    vertical-align: middle;
+    color: #fff;
+    margin-left: 120px; }
 
 /*# sourceMappingURL=main.css.map */
