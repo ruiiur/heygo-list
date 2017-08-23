@@ -74,7 +74,8 @@
       color: #666;
       font-size: 12px;
       padding: 10px;
-      font-weight: normal; }
+      font-weight: normal;
+      text-align: center; }
     .main-content table td {
       text-align: center;
       border: 1px solid #eee;

@@ -11,7 +11,7 @@ $(function(){
         $.ajax({
             type: 'POST',
             url: 'detail.json',
-            data: {pageNo:page,pageSize:6},//发送到服务器的数据
+            // data: {pageNo:page,pageSize:6},//发送到服务器的数据
             dataType:'json',//预期服务器返回的数据类型
             // beforeSend:function(){
             //     $(".new-ul").append("<li class='loading'>loading...</li>");//显示加载动画
@@ -21,21 +21,23 @@ $(function(){
                 pageSize = data.pageSize; //每页显示条数
                 pageNo = page; //当前页
                 console.log(data);
-                var li = "";
+                var tr = "";
                 var list = data.list;
-                $(".new-ul").empty();//清空数据区
+                $("tbody").empty();//清空数据区
+                console.log(list);
                 if(list.length==0){
-                    li+='<li class="tem"><i></i><p>暂无数据信息</p></li>';
-                    $(".new-ul").append(li);
-                    $(".new-ul").css({'height':'350px'});
-                    $(".news-center").css({'height':'350px'});
+                    tr+='<tr><td><input type="checkbox"></td><td>暂无数据</td></tr>';
+                    $("tbody").append(tr);
+                    // $(".new-ul").css({'height':'350px'});
+                    // $(".news-center").css({'height':'350px'});
                 }
                 else{
                     $.each(list,function(index,params){
                         var id=list[index].id;//遍历json数据列
-                        li+='<li><a href=" dynamic.html?id='+id +' "><img src='+ list[index].image+ '><h2>'+list[index].title+'</h2><p>'+list[index].newsHeadLine+'</p></a></li>'
+                        tr+='<tr><td><input type="checkbox"></td><td>'+list[index].a+'</td><td>'+list[index].b+'</td><td>'+list[index].c+'</td><td>'+list[index].d+'</td><td>'+list[index].e+'</td><td>'+list[index].h+'</td><td>'+list[index].l+'</td><td>'+list[index].m+'</td><td>'+list[index].n+'</td><td>'+list[index].n+'</td><td>'+list[index].n+'</td><td><a href="javascript:;">编辑</a> <a href="javascript:;">删除</a></td></tr>';
+                        // li+='<li><a href=" dynamic.html?id='+id +' "><img src='+ list[index].image+ '><h2>'+list[index].title+'</h2><p>'+list[index].newsHeadLine+'</p></a></li>'
                     });
-                    $(".new-ul").append(li);
+                    $("tbody").append(tr);
                 }
             },
             complete:function(){
@@ -58,26 +60,29 @@ $(function(){
         if(page>totalPage) page=totalPage;
         //页码小于1
         if(page<1) page=1;
-        pageStr = "<span>共"+itemCount+"条</span><span>"+page
-            +"/"+totalPage+"</span>";
-
+        // pageStr = "<span>共"+itemCount+"条</span><span>"+page
+        //     +"/"+totalPage+"</span>";
+        pageStr='<span>首页</span><span>上一页</span><span class="current">'+page+'</span><span>下一页</span><span>末页</span><span class="sum">共'+totalPage+'页/'+itemCount+'条数据</span><p>转到 <input value="1"> 页';
         //如果是第一页
         if(page==1){
-            pageStr += "<span>首页</span><span>上一页</span>";
+            pageStr='<span class="disabled">首页</span><span class="disabled">上一页</span><span class="current">1</span><span class="disabled">下一页</span><span class="disabled">末页</span><span class="sum">共'+totalPage+'页/'+itemCount+'条数据</span><p>转到 <input value="1"> 页';
         }else{
-            pageStr += "<span><a href='javascript:void(0)' rel='1'>首页</a></span> <span><a href='javascript:void(0)' rel='"+(page-1)+"'>上一页</a></span>";
+            pageStr='<span class="disabled" rel="1">首页</span><span>上一页</span><span class="current">'+page+'</span><span>下一页</span><span>末页</span><span class="sum">共'+totalPage+'页/'+itemCount+'条数据</span><p>转到 <input value="1"> 页';
+            // pageStr += "<span><a href='javascript:void(0)' rel='1'>首页</a></span> <span><a href='javascript:void(0)' rel='"+(page-1)+"'>上一页</a></span>";
         }
 
         //如果是最后页
         if(page>=totalPage){
-            pageStr += "<span>下一页</span><span>尾页</span>";
+            pageStr='<span class="disabled">首页</span><span>上一页</span><span class="current">'+page+'</span><span>下一页</span><span>末页</span><span class="sum">共'+totalPage+'页/'+itemCount+'条数据</span><p>转到 <input value="1"> 页';
+            // pageStr += "<span>下一页</span><span>尾页</span>";
         }else{
-            pageStr += "<span><a href='javascript:void(0)' rel='"+(parseInt(page)+1)+"'>下一页</a></span><span><a href='javascript:void(0)' rel='"+totalPage+"'>尾页</a></span>";
+            pageStr='<span class="disabled">首页</span><span>上一页</span><span class="current">'+page+'</span><span>下一页</span><span rel="'+totalPage+'">末页</span><span class="sum">共'+totalPage+'页/'+itemCount+'条数据</span><p>转到 <input value="1"> 页';
+            // pageStr += "<span><a href='javascript:void(0)' rel='"+(parseInt(page)+1)+"'>下一页</a></span><span><a href='javascript:void(0)' rel='"+totalPage+"'>尾页</a></span>";
         }
 
-        $(".page-count").html(pageStr);
+        $(".pages").html(pageStr);
 
-        $(".page-count span a").on('click',function(){
+        $(".pages span").on('click',function(){
             var rel = $(this).attr("rel");
             page=rel;
             if(rel){
