@@ -56,29 +56,30 @@ $(function(){
         if(page>totalPage) page=totalPage;
         //页码小于1
         if(page<1) page=1;
-        // pageStr = "<span>共"+itemCount+"条</span><span>"+page
-        //     +"/"+totalPage+"</span>";
-        pageStr='<span>首页</span><span rel="'+(parseInt(page)-1)+'">上一页</span><span class="current">'+page+'</span><span rel="'+parseInt(page)+1+'" name="1">下一页</span><span>末页</span><span class="sum">共'+totalPage+'页/'+itemCount+'条数据</span><p>转到 <input value="1"> 页';
+        pageStr='<span rel="1">首页</span><span rel="'+(parseInt(page)-1)+'">上一页</span>...<span rel="'+(parseInt(page)-1)+'">'+(parseInt(page)-1)+'</span><span class="current" rel="'+page+'">'+page+'</span><span rel="'+(parseInt(page)+1)+'">'+(parseInt(page)+1)+'</span>...<span rel="'+(parseInt(page)+1)+'" >下一页</span><span rel="'+totalPage+'">末页</span><span class="sum" rel="'+totalPage+'">共'+totalPage+'页/'+itemCount+'条数据</span><p>转到 <input value="1"> 页';
+
         //如果是第一页
-        if(page==1){
+        if(page==1) {
             console.log('1')
-            pageStr='<span class="disabled">首页</span><span class="disabled">上一页</span><span class="current" rel="'+page+'">1</span><span rel="'+(parseInt(page)+1)+'">'+(parseInt(page)+1)+'</span><span rel="'+(parseInt(page)+2)+'">'+(parseInt(page)+2)+'</span>...<span rel="'+(parseInt(page)+1)+'" >下一页</span><span >末页</span><span class="sum">共'+totalPage+'页/'+itemCount+'条数据</span><p>转到 <input value="1"> 页';
-        }else{
-            console.log('2')
-            pageStr='<span class="disabled" rel="1">首页</span><span rel="'+parseInt(page)-1+'">上一页</span><span class="current">'+page+'</span><span rel="'+parseInt(page)+1+'" name="3">下一页</span><span>末页</span><span class="sum">共'+totalPage+'页/'+itemCount+'条数据</span><p>转到 <input value="1"> 页';
+            pageStr = '<span class="disabled" rel="1">首页</span><span class="disabled">上一页</span><span class="current" rel="' + page + '">1</span><span rel="' + (parseInt(page) + 1) + '">' + (parseInt(page) + 1) + '</span><span rel="' + (parseInt(page) + 2) + '">' + (parseInt(page) + 2) + '</span>...<span rel="' + (parseInt(page) + 1) + '" >下一页</span><span rel="'+totalPage+'">末页</span><span class="sum">共' + totalPage + '页/' + itemCount + '条数据</span><p>转到 <input value="1" > 页';
         }
+        // }else{
+        //     console.log('2')
+        //     pageStr='<span class="disabled" rel="1">首页</span><span rel="'+parseInt(page)-1+'">上一页</span><span class="current">'+page+'</span><span rel="'+parseInt(page)+1+'" name="3">下一页</span><span>末页</span><span class="sum">共'+totalPage+'页/'+itemCount+'条数据</span><p>转到 <input value="1"> 页';
+        // }
 
         //如果是最后页
-        if(page>=totalPage){
+        if(page>=totalPage) {
             console.log('3')
-            pageStr='<span>首页</span><span rel="'+(parseInt(page)-1)+'">上一页</span>...<span rel="'+(parseInt(page)-2)+'">'+(parseInt(page)-2)+'</span><span rel="'+(parseInt(page)-1)+'">'+(parseInt(page)-1)+'</span><span class="current" rel="'+page+'">'+page+'</span><span class="disabled">下一页</span><span class="disabled">末页</span><span class="sum">共'+totalPage+'页/'+itemCount+'条数据</span><p>转到 <input value="1"> 页';
-        }else{
-            console.log('LL'+'4')
-            console.log(page);
-            console.log(totalPage);
-            pageStr='<span class="disabled">首页</span><span class="disabled">上一页</span><span class="current" rel="'+page+'">1</span><span rel="'+(parseInt(page)+1)+'">'+(parseInt(page)+1)+'</span><span rel="'+(parseInt(page)+2)+'">'+(parseInt(page)+2)+'</span>...<span rel="'+(parseInt(page)+1)+'" >下一页</span><span >末页</span><span class="sum">共'+totalPage+'页/'+itemCount+'条数据</span><p>转到 <input value="1"> 页';
-
+            pageStr = '<span>首页</span><span rel="' + (parseInt(page) - 1) + '">上一页</span>...<span rel="' + (parseInt(page) - 2) + '">' + (parseInt(page) - 2) + '</span><span rel="' + (parseInt(page) - 1) + '">' + (parseInt(page) - 1) + '</span><span class="current" rel="' + page + '">' + page + '</span><span class="disabled">下一页</span><span class="disabled">末页</span><span class="sum">共' + totalPage + '页/' + itemCount + '条数据</span><p>转到 <input value="1"> 页';
         }
+        // }else{
+        //     console.log('LL'+'4')
+        //     console.log(page);
+        //     console.log(totalPage);
+        //     pageStr='<span class="disabled">首页</span><span class="disabled">上一页</span><span class="current" rel="'+page+'">1</span><span rel="'+(parseInt(page)+1)+'">'+(parseInt(page)+1)+'</span><span rel="'+(parseInt(page)+2)+'">'+(parseInt(page)+2)+'</span>...<span rel="'+(parseInt(page)+1)+'" >下一页</span><span >末页</span><span class="sum">共'+totalPage+'页/'+itemCount+'条数据</span><p>转到 <input value="1"> 页';
+        //
+        // }
 
         $(".pages").html(pageStr);
 
