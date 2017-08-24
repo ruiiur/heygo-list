@@ -26,7 +26,7 @@
         <a href="javascript:;">作废Heygo卡</a>
     </div>
     <div class="choose-time">
-        <input type="text" placeholder="请选择时间段"><span><button>选择时间</button></span>
+        <input type="text" id="config-demo" class="form-control" placeholder="请选择搜索时间"><span><button>选择时间</button></span>
     </div>
     <div class="search">
         <input type="text" placeholder="请选择搜索类型"><span><button>搜索</button></span>
@@ -159,5 +159,20 @@
         <span class="disabled">首页</span><span>上一页</span><span class="current">1</span><span>下一页</span><span>末页</span><span class="sum">共1页/4条数据</span><p>转到 <input value="1"> 页</p>
     </div>
 </div>
+
+<script type="text/javascript">
+    $(document).ready(function() {
+        updateConfig();
+
+        function updateConfig() {
+            var options = {};
+            $('#config-text').val("$('#demo').daterangepicker(" + JSON.stringify(options, null, '    ') + ", function(start, end, label) {\n  console.log(\"New date range selected: ' + start.format('YYYY-MM-DD') + ' to ' + end.format('YYYY-MM-DD') + ' (predefined range: ' + label + ')\");\n});");
+
+            $('#config-demo').daterangepicker(options, function(start, end, label) { console.log('New date range selected: ' + start.format('YYYY-MM-DD') + ' to ' + end.format('YYYY-MM-DD') + ' (predefined range: ' + label + ')'); });
+
+        }
+
+    });
+</script>
 </body>
 </html>

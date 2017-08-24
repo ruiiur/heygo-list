@@ -26,6 +26,8 @@
       font-size: 12px;
       text-decoration: none;
       margin-right: 8px; }
+  .main-content .form-control {
+    display: inline-block; }
   .main-content .choose-time, .main-content .search {
     display: inline-block;
     margin-right: 10px;
@@ -67,7 +69,8 @@
     box-shadow: 0 1px 1px rgba(0, 0, 0, 0.05);
     margin-bottom: 15px;
     font-size: 12px;
-    border-collapse: collapse; }
+    border-collapse: collapse;
+    overflow-x: scroll; }
     .main-content table th {
       border: 1px solid #eee;
       background: #f4f5f9;
@@ -75,14 +78,16 @@
       font-size: 12px;
       padding: 10px;
       font-weight: normal;
-      text-align: center; }
+      text-align: center;
+      min-width: 36px; }
     .main-content table td {
       text-align: center;
       border: 1px solid #eee;
       word-break: break-all;
       display: table-cell;
       box-sizing: border-box;
-      padding: 10px; }
+      padding: 10px;
+      min-width: 36px; }
       .main-content table td > a {
         color: #07d;
         text-decoration: none; }
@@ -99,6 +104,13 @@
       .main-content .pages > span:not(.sum).disabled {
         background-color: #FFF;
         color: #DFDFDF; }
+      .main-content .pages > span:not(.sum).current {
+        background: #3fb838;
+        border: 1px solid #3fb838;
+        border-radius: 2px;
+        color: #fff;
+        margin: 3px;
+        padding: 5px 10px; }
     .main-content .pages .sum {
       font-size: 14px;
       margin: 3px;
